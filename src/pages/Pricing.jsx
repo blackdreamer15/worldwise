@@ -1,6 +1,8 @@
+import styles from "./Product.module.css";
+
 export default function Pricing() {
   return (
-    <main>
+    <main className={styles.product}>
       <section>
         <div>
           <h2>
