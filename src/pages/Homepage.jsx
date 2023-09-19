@@ -1,6 +1,8 @@
+import styles from "./Homepage.module.css";
+
 export default function Homepage() {
   return (
-    <main>
+    <main className={styles.homepage}>
       <section>
         <h1>
           You travel the world.
