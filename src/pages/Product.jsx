@@ -1,6 +1,8 @@
+import styles from "./Product.module.css";
+
 export default function Product() {
   return (
-    <main>
+    <main className={styles.product}>
       <section>
         <img
           src="img-1.jpg"
