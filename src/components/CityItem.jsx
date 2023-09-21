@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./CityItem.module.css";
 
 const formatDate = (date) =>
@@ -9,14 +10,22 @@ const formatDate = (date) =>
 
 /*eslint-disable react/prop-types*/
 function CityItem({ city }) {
-  const { emoji, cityName, date } = city;
+  const {
+    emoji,
+    cityName,
+    date,
+    id,
+    position: { lat, lng },
+  } = city;
 
   return (
-    <li className={styles.cityItem}>
-      <span className={styles.emoji}>{emoji}</span>
-      <span className={styles.name}>{cityName}</span>
-      <time className={styles.date}>{formatDate(date || null)}</time>
-      <button className={styles.deleteBtn}>&times;</button>
+    <li>
+      <Link className={styles.cityItem} to={`${id}?lat=${lat}&lng=${lng}`}>
+        <span className={styles.emoji}>{emoji}</span>
+        <span className={styles.name}>{cityName}</span>
+        <time className={styles.date}>{formatDate(date || null)}</time>
+        <button className={styles.deleteBtn}>&times;</button>
+      </Link>
     </li>
   );
 }
