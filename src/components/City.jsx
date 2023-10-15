@@ -1,5 +1,6 @@
 import styles from "./City.module.css";
 
+import Spinner from "./Spinner";
 import { useParams } from "react-router";
 import { useCities } from "../contexts/CitiesContext";
 import { useEffect } from "react";
@@ -21,13 +22,16 @@ function City() {
   //   notes: "My favorite city so far!",
   // };
 
-  const { id } = useParams();
   // const [searchParams] = useSearchParams();
 
   // const lat = searchParams.get("lat");
   // const lng = searchParams.get("lng");
 
-  const { getCity, currentCity } = useCities();
+  const { id } = useParams();
+
+  const { getCity, currentCity, isLoading } = useCities();
+
+  const { cityName, emoji, date, notes } = currentCity;
 
   useEffect(
     function () {
@@ -36,8 +40,7 @@ function City() {
     [id]
   );
 
-  const { cityName, emoji, date, notes } = currentCity;
-
+  if (isLoading) <Spinner />;
   // return (
   //   <>
   //     <h1>CITY</h1>
