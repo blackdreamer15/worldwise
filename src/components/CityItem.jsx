@@ -8,6 +8,7 @@ const formatDate = (date) =>
     year: "numeric",
   }).format(new Date(date));
 
+/*eslint-disable react/prop-types*/
 function CityItem({ city }) {
   const {
     emoji,
