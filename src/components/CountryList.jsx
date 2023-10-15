@@ -3,7 +3,6 @@ import Spinner from "./Spinner";
 import Message from "./Message";
 import CountryItem from "./CountryItem";
 
-/*eslint-disable react/prop-types*/
 function CountryList({ cities, isLoading }) {
   if (isLoading) return <Spinner />;
 
