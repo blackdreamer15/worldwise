@@ -41,7 +41,7 @@ function City() {
     [id]
   );
 
-  if (isLoading) <Spinner />;
+  if (isLoading) return <Spinner />;
   // return (
   //   <>
   //     <h1>CITY</h1>
