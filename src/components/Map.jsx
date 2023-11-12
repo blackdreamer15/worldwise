@@ -8,10 +8,10 @@ function Map() {
     const navigate = useNavigate();
     const [mapPosition /*, setMapPosition*/] = useState([40, 0]);
     const { cities } = useCities();
-    // const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    // const lat = searchParams.get("lat");
-    // const lng = searchParams.get("lng");
+    const mapLat = searchParams.get("lat");
+    const mapLng = searchParams.get("lng");
 
     return (
         <div
@@ -21,7 +21,7 @@ function Map() {
             }}
         >
             <MapContainer
-                center={mapPosition}
+                center={[mapLat, mapLng]}
                 zoom={13}
                 scrollWheelZoom={true}
                 className={styles.map}
