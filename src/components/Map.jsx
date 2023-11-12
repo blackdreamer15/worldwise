@@ -48,6 +48,9 @@ function Map() {
 
 function ChangeCenter({ position }) {
     const map = useMap();
+    map.setView(position);
+
+    return null;
 }
 
 export default Map;
