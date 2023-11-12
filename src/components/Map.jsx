@@ -1,4 +1,4 @@
-import { useNavigate /*useSearchParams*/ } from "react-router-dom";
+import { useNavigate useSearchParams } from "react-router-dom";
 import styles from "./Map.module.css";
 import { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
