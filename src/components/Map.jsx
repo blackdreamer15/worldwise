@@ -22,7 +22,7 @@ function Map() {
         >
             <MapContainer
                 center={[mapLat, mapLng]}
-                zoom={13}
+                zoom={6}
                 scrollWheelZoom={true}
                 className={styles.map}
             >
