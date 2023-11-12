@@ -39,8 +39,8 @@ function Map() {
                 />
                 {cities.map((city) => (
                     <Marker
-                        position={[city.position.lat, city.position.lng]}
-                        key={city.id}
+                        position={[city.position?.lat, city.position?.lng]}
+                        key={`${city.cityName}${city.id}`}
                     >
                         <Popup>
                             <span>{city.emoji}</span>{" "}
@@ -49,7 +49,7 @@ function Map() {
                     </Marker>
                 ))}
 
-                <ChangeCenter position={[mapLat, mapLng]} />
+                <ChangeCenter position={mapPosition} />
             </MapContainer>
         </div>
     );
