@@ -1,6 +1,7 @@
 import { useNavigate /*useSearchParams*/ } from "react-router-dom";
 import styles from "./Map.module.css";
 import { useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 function Map() {
     const navigate = useNavigate();
