@@ -16,15 +16,7 @@ function Map() {
             onClick={() => {
                 navigate("form");
             }}
-        >
-            {/* <h2>
-        lat:{lat} and lng: {lng}
-      </h2>
-
-      <button onClick={() => setSearchParams({ lat: 23, lng: 25 })}>
-        Change PARMS
-      </button> */}
-        </div>
+        ></div>
     );
 }
 
