@@ -11,6 +11,7 @@ import {
 } from "react-leaflet";
 import { useCities } from "../contexts/CitiesContext";
 import { useGeolocation } from "../hooks/useGeolocation";
+import Button from "./Button";
 
 function Map() {
     const [mapPosition, setMapPosition] = useState([40, 0]);
@@ -34,6 +35,7 @@ function Map() {
 
     return (
         <div className={styles.mapContainer}>
+            <Button type="position"></Button>
             <MapContainer
                 center={mapPosition}
                 zoom={6}
