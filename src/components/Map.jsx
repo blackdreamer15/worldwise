@@ -35,7 +35,7 @@ function Map() {
 
     return (
         <div className={styles.mapContainer}>
-            <Button type="position"></Button>
+            <Button type="position" onClick={getPosition}></Button>
             <MapContainer
                 center={mapPosition}
                 zoom={6}
