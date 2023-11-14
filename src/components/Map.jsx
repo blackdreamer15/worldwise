@@ -11,10 +11,12 @@ import {
 } from "react-leaflet";
 import { useCities } from "../contexts/CitiesContext";
 import { useGeolocation } from "../hooks/useGeolocation";
+import { useUrlPosition } from "../hooks/useUrlPosition";
 import Button from "./Button";
 
 function Map() {
     const [mapPosition, setMapPosition] = useState([40, 0]);
+    const [mapLat, mapLng] = useUrlPosition();
     const { cities } = useCities();
     const {
         isLoading: isLoadingPosition,
