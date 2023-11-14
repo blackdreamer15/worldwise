@@ -16,15 +16,11 @@ import Button from "./Button";
 function Map() {
     const [mapPosition, setMapPosition] = useState([40, 0]);
     const { cities } = useCities();
-    const [searchParams] = useSearchParams();
     const {
         isLoading: isLoadingPosition,
         position: geolocationPosition,
         getPosition,
     } = useGeolocation();
-
-    const mapLat = searchParams.get("lat");
-    const mapLng = searchParams.get("lng");
 
     useEffect(
         function () {
