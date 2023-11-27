@@ -24,6 +24,11 @@ function Form() {
     const [mapLat, mapLng] = useUrlPosition();
     const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
 
+    useEffect(async function fetchCityData() {
+        try {
+        } catch (error) {}
+    }, []);
+
     return (
         <form className={styles.form}>
             <div className={styles.row}>
