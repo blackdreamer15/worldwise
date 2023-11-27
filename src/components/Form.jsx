@@ -70,9 +70,11 @@ function Form() {
     if (!lat && !lng) <Message message="Start by clicking on the map" />;
 
     if (geocodingError) return <Message message={geocodingError} />;
+    
+    function handleSubmit(e) 
 
     return (
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.row}>
                 <label htmlFor="cityName">City name</label>
                 <input
