@@ -36,6 +36,8 @@ function Form() {
                     );
                     const data = await res.json();
                     console.log(data);
+
+                    setCityName(data.cityName || data.locality || "");
                 } catch (error) {
                 } finally {
                     setIsLoadingGeocoding(false);
