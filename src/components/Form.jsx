@@ -23,7 +23,7 @@ function Form() {
     const [date, setDate] = useState(new Date());
     const [notes, setNotes] = useState("");
 
-    const [mapLat, mapLng] = useUrlPosition();
+    const [lat, lng] = useUrlPosition();
     const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
 
     useEffect(async function fetchCityData() {
