@@ -96,7 +96,12 @@ function Form() {
                     onChange={(e) => setDate(e.target.value)}
                     value={date}
                 /> */}
-                <DatePicker />
+                <DatePicker
+                    id="date"
+                    selected={date}
+                    dateFormat="dd/MM/yyyy"
+                    onChange={(date) => setDate(date)}
+                />
             </div>
 
             <div className={styles.row}>
