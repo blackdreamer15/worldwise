@@ -35,6 +35,8 @@ function CitiesProvider({ children }) {
                 },
             });
             const data = await res.json();
+
+            setCities((cities) => [...cities, data]);
         } catch (err) {
             alert("There was an error while positing the data...");
         } finally {
