@@ -19,7 +19,7 @@ const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
 function Form() {
     const [cityName, setCityName] = useState("");
-    // const [country, setCountry] = useState("");
+    const [country, setCountry] = useState("");
     const [date, setDate] = useState(new Date());
     const [notes, setNotes] = useState("");
 
@@ -38,6 +38,7 @@ function Form() {
                     console.log(data);
 
                     setCityName(data.cityName || data.locality || "");
+                    setCountry(data.countryName);
                 } catch (error) {
                 } finally {
                     setIsLoadingGeocoding(false);
