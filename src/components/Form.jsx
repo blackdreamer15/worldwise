@@ -22,6 +22,7 @@ function Form() {
     const [notes, setNotes] = useState("");
 
     const [mapLat, mapLng] = useUrlPosition();
+    const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
 
     return (
         <form className={styles.form}>
