@@ -25,6 +25,7 @@ function reducer(state, action) {
             return {
                 ...state,
                 isLoading: false,
+                currentCity: {},
                 cities: state.cities.filter(
                     (city) => city.id !== action.payload
                 ),
