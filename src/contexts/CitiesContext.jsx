@@ -6,7 +6,11 @@ const CitiesContext = createContext();
 
 function reducer(state, action) {}
 
-const initialState = {};
+const initialState = {
+    cities: {},
+    isLoading: false,
+    currentCity: {},
+};
 
 /*eslint-disable react/prop-types*/
 function CitiesProvider({ children }) {
