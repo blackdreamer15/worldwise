@@ -10,7 +10,17 @@ const URL = "http://localhost:8000";
 
 const CitiesContext = createContext();
 
-function reducer(state, action) {}
+function reducer(state, action) {
+    switch (action.type) {
+        case "loading":
+            return { ...state, isLoading: true };
+        case "city/loaded":
+            return { ...state, isLoading: false, currentCity: action.payload };
+
+        default:
+            throw new Error("The action is unknown");
+    }
+}
 
 const initialState = {
     cities: {},
@@ -32,15 +42,15 @@ function CitiesProvider({ children }) {
     async function getCity(id) {
         if (Number(id) === currentCity.id) return;
 
+        dispatch({ type: "loading" });
+
         try {
-            setIsLoading(true);
             const res = await fetch(`${URL}/cities/${id}`);
             const data = await res.json();
-            setCurrentCity(data);
+
+            dispatch({ type: "city/loaded", payload: data });
         } catch (err) {
             alert("There was an error while loading the data...");
-        } finally {
-            setIsLoading(false);
         }
     }
 
