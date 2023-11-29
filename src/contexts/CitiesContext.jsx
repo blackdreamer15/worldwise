@@ -34,6 +34,12 @@ function reducer(state, action) {
                     (city) => city.id !== action.payload
                 ),
             };
+        case "cities/loaded":
+            return {
+                ...state,
+                isLoading: false,
+                cities: action.payload,
+            };
         case "error":
             return { ...state, error: action.payload };
         default:
@@ -120,19 +126,19 @@ function CitiesProvider({ children }) {
 
     useEffect(function () {
         async function fetchCities() {
+            dispatch({ type: "loading" });
+
             try {
-                setIsLoading(true);
                 const res = await fetch(`${URL}/cities`);
                 const data = await res.json();
-                setCities(data);
+
+                dispatch({ type: "cities/loaded", payload: data });
             } catch (err) {
                 dispatch({
                     type: "error",
                     payload: "There was an error while loading cities...",
                 });
                 alert(error);
-            } finally {
-                setIsLoading(false);
             }
         }
 
