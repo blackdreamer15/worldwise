@@ -14,14 +14,26 @@ function reducer(state, action) {
     switch (action.type) {
         case "loading":
             return { ...state, isLoading: true };
+        case "city/loaded":
+            return {
+                ...state,
+                isLoading: false,
+                currentCity: action.payload,
+            };
         case "city/created":
             return {
                 ...state,
                 isLoading: false,
                 cities: [...state.cities, action.payload],
             };
-        case "city/loaded":
-            return { ...state, isLoading: false, currentCity: action.payload };
+        case "city/deleted":
+            return {
+                ...state,
+                isLoading: false,
+                cities: state.cities.filter(
+                    (city) => city.id !== action.payload
+                ),
+            };
         case "error":
             return { ...state, error: action.payload };
         default:
@@ -89,21 +101,20 @@ function CitiesProvider({ children }) {
     }
 
     async function deleteCity(id) {
+        dispatch({ type: "loading" });
+
         try {
-            setIsLoading(true);
             await fetch(`${URL}/cities/${id}`, {
                 method: "DELETE",
             });
 
-            setCities((cities) => cities.filter((city) => city.id !== id));
+            dispatch({ type: "city/deleted", payload: id });
         } catch (err) {
             dispatch({
                 type: "error",
                 payload: "There was an error while deleting the city...",
             });
             alert(error);
-        } finally {
-            setIsLoading(false);
         }
     }
 
