@@ -4,11 +4,14 @@ const URL = "http://localhost:8000";
 
 const CitiesContext = createContext();
 
+function reducer(state, action) {}
+
+const initialState = {};
+
 /*eslint-disable react/prop-types*/
 function CitiesProvider({ children }) {
     const [cities, setCities] = useState([{}]);
     const [isLoading, setIsLoading] = useState(false);
-
     const [currentCity, setCurrentCity] = useState({});
 
     async function getCity(id) {
