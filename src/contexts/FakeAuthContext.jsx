@@ -4,8 +4,8 @@ const AuthContext = createContext();
 
 function reducer(state, action) {
     switch (action.type) {
-        case "":
-            return {};
+        case "login":
+            return { ...state, user: action.payload, isAuthenticated: true };
         default:
             throw new Error("The action is unknown");
     }
