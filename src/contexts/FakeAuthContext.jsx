@@ -1,8 +1,21 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 const AuthContext = createContext();
 
+function reducer(state, action) {
+    switch (action.type) {
+        case "":
+            return {};
+        default:
+            throw new Error("The action is unknown");
+    }
+}
+
+const initialState = { user: null, isAuthenticated: false };
+
 const AuthProvider = ({ children }) => {
+    const [{ user, isAuthenticated }, dispatch] = useReducer(initialState);
+
     function login(email, password) {}
 
     function logout() {}
