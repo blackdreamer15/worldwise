@@ -16,7 +16,8 @@ function reducer(state, action) {
             return { ...state, isLoading: true };
         case "city/loaded":
             return { ...state, isLoading: false, currentCity: action.payload };
-
+        case "error":
+            return { ...state, error: action.payload };
         default:
             throw new Error("The action is unknown");
     }
@@ -34,7 +35,7 @@ function CitiesProvider({ children }) {
     // const [isLoading, setIsLoading] = useState(false);
     // const [currentCity, setCurrentCity] = useState({});
 
-    const [{ cities, isLoading, currentCity }, dispatch] = useReducer(
+    const [{ cities, isLoading, currentCity, error }, dispatch] = useReducer(
         reducer,
         initialState
     );
@@ -50,7 +51,11 @@ function CitiesProvider({ children }) {
 
             dispatch({ type: "city/loaded", payload: data });
         } catch (err) {
-            alert("There was an error while loading the data...");
+            dispatch({
+                type: "error",
+                payload: "There was an error while loading the city...",
+            });
+            alert(error);
         }
     }
 
@@ -68,7 +73,11 @@ function CitiesProvider({ children }) {
 
             setCities((cities) => [...cities, data]);
         } catch (err) {
-            alert("There was an error while positing the data...");
+            dispatch({
+                type: "error",
+                payload: "There was an error while creating the city...",
+            });
+            alert(error);
         } finally {
             setIsLoading(false);
         }
@@ -83,7 +92,11 @@ function CitiesProvider({ children }) {
 
             setCities((cities) => cities.filter((city) => city.id !== id));
         } catch (err) {
-            alert("There was an error while deleting the data...");
+            dispatch({
+                type: "error",
+                payload: "There was an error while deleting the city...",
+            });
+            alert(error);
         } finally {
             setIsLoading(false);
         }
@@ -97,7 +110,11 @@ function CitiesProvider({ children }) {
                 const data = await res.json();
                 setCities(data);
             } catch (err) {
-                alert("There was an error while loading the data...");
+                dispatch({
+                    type: "error",
+                    payload: "There was an error while loading cities...",
+                });
+                alert(error);
             } finally {
                 setIsLoading(false);
             }
