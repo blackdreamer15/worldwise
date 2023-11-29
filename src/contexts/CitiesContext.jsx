@@ -14,6 +14,12 @@ function reducer(state, action) {
     switch (action.type) {
         case "loading":
             return { ...state, isLoading: true };
+        case "city/created":
+            return {
+                ...state,
+                isLoading: false,
+                cities: [...state.cities, action.payload],
+            };
         case "city/loaded":
             return { ...state, isLoading: false, currentCity: action.payload };
         case "error":
@@ -60,8 +66,9 @@ function CitiesProvider({ children }) {
     }
 
     async function createCity(newCity) {
+        dispatch({ type: "loading" });
+
         try {
-            setIsLoading(true);
             const res = await fetch(`${URL}/cities/`, {
                 method: "POST",
                 body: JSON.stringify(newCity),
@@ -71,15 +78,13 @@ function CitiesProvider({ children }) {
             });
             const data = await res.json();
 
-            setCities((cities) => [...cities, data]);
+            dispatch({ type: "city/created", payload: data });
         } catch (err) {
             dispatch({
                 type: "error",
                 payload: "There was an error while creating the city...",
             });
             alert(error);
-        } finally {
-            setIsLoading(false);
         }
     }
 
