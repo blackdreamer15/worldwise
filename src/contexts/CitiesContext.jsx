@@ -1,10 +1,4 @@
-import {
-    createContext,
-    useState,
-    useEffect,
-    useContext,
-    useReducer,
-} from "react";
+import { createContext, useEffect, useContext, useReducer } from "react";
 
 const URL = "http://localhost:8000";
 
@@ -55,10 +49,6 @@ const initialState = {
 
 /*eslint-disable react/prop-types*/
 function CitiesProvider({ children }) {
-    // const [cities, setCities] = useState([{}]);
-    // const [isLoading, setIsLoading] = useState(false);
-    // const [currentCity, setCurrentCity] = useState({});
-
     const [{ cities, isLoading, currentCity, error }, dispatch] = useReducer(
         reducer,
         initialState
