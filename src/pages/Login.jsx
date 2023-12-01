@@ -1,4 +1,4 @@
-import { useState, useNavigate } from "react";
+import { useState, useNavigate, useEffect } from "react";
 import styles from "./Login.module.css";
 import PageNav from "../components/PageNav";
 import { useAuth } from "../contexts/FakeAuthContext";
@@ -10,6 +10,13 @@ export default function Login() {
     // PRE-FILL FOR DEV PURPOSES
     const [email, setEmail] = useState("jack@example.com");
     const [password, setPassword] = useState("qwerty");
+
+    useEffect(
+        function () {
+            if (isAuthenticated) navigate("/app");
+        },
+        [isAuthenticated]
+    );
 
     return (
         <main className={styles.login}>
