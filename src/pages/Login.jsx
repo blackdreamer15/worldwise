@@ -18,11 +18,17 @@ export default function Login() {
         [isAuthenticated]
     );
 
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        if (email && password) login(email, password);
+    }
+
     return (
         <main className={styles.login}>
             <PageNav />
 
-            <form className={styles.form} onSubmit={login}>
+            <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.row}>
                     <label htmlFor="email">Email address</label>
                     <input
