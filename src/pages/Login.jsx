@@ -4,7 +4,7 @@ import PageNav from "../components/PageNav";
 import { useAuth } from "../contexts/FakeAuthContext";
 
 export default function Login() {
-    const { login } = useAuth();
+    const { login, isAuthenticated } = useAuth();
 
     // PRE-FILL FOR DEV PURPOSES
     const [email, setEmail] = useState("jack@example.com");
