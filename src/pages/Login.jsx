@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useNavigate } from "react";
 import styles from "./Login.module.css";
 import PageNav from "../components/PageNav";
 import { useAuth } from "../contexts/FakeAuthContext";
 
 export default function Login() {
     const { login, isAuthenticated } = useAuth();
+    const navigate = useNavigate();
 
     // PRE-FILL FOR DEV PURPOSES
     const [email, setEmail] = useState("jack@example.com");
