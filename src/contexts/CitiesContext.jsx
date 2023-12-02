@@ -116,26 +116,29 @@ function CitiesProvider({ children }) {
         }
     }
 
-    useEffect(function () {
-        async function fetchCities() {
-            dispatch({ type: "loading" });
+    useEffect(
+        function () {
+            async function fetchCities() {
+                dispatch({ type: "loading" });
 
-            try {
-                const res = await fetch(`${URL}/cities`);
-                const data = await res.json();
+                try {
+                    const res = await fetch(`${URL}/cities`);
+                    const data = await res.json();
 
-                dispatch({ type: "cities/loaded", payload: data });
-            } catch (err) {
-                dispatch({
-                    type: "error",
-                    payload: "There was an error while loading cities...",
-                });
-                alert(error);
+                    dispatch({ type: "cities/loaded", payload: data });
+                } catch (err) {
+                    dispatch({
+                        type: "error",
+                        payload: "There was an error while loading cities...",
+                    });
+                    alert(error);
+                }
             }
-        }
 
-        fetchCities();
-    }, []);
+            fetchCities();
+        },
+        [error]
+    );
 
     return (
         <CitiesContext.Provider
